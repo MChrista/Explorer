@@ -6,6 +6,8 @@ package explorer;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.io.File;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,9 +39,12 @@ public class Explorer extends JFrame{
         this.setVisible(true);
         
         
-        
+        //Andi: Vorschau-Test
         this.setBounds(100, 100, 500, 400);
-        
+        vor.reload(new File("Testdateien/square100.jpg"));
+        vor.reload(new File("Testdateien/square200.png"));
+        vor.reload(new File("Testdateien/square400.gif"));
+        vor.reload(new File("Testdateien/square800.png"));
     }
 
     /**
