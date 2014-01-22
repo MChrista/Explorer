@@ -10,6 +10,6 @@ import javax.swing.JPanel;
  *
  * @author A001278
  */
-public class Baumstruktur extends JPanel{
+public class Ordnerstruktur extends JPanel{
     
 }

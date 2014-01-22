@@ -20,7 +20,7 @@ public class Explorer extends JFrame{
     JLabel ordner=new JLabel("Ordner");
     JLabel datei=new JLabel("Datei");
     JLabel vorschau=new JLabel("Vorschau");
-    Baumstruktur bst=new Baumstruktur();
+    Ordnerstruktur bst=new Ordnerstruktur();
     Dateistruktur dst=new Dateistruktur();
     Vorschau vor=new Vorschau();
     
@@ -40,7 +40,7 @@ public class Explorer extends JFrame{
         
         
         //Andi: Vorschau-Test
-        this.setBounds(100, 100, 500, 400);
+        this.setBounds(100, 100, 800, 500);
         vor.reload(new File("Testdateien/square100.jpg"));
         vor.reload(new File("Testdateien/square200.png"));
         vor.reload(new File("Testdateien/square400.gif"));
