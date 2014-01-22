@@ -26,6 +26,7 @@ public class Explorer extends JFrame{
     
     public Explorer(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setBounds(0, 0, 500, 500);
         this.setLayout(new BorderLayout());
         JPanel pane=new JPanel();
         pane.setLayout(new GridLayout(1,3));
@@ -37,7 +38,7 @@ public class Explorer extends JFrame{
         this.add(dst,BorderLayout.CENTER);
         this.add(vor,BorderLayout.EAST);
         this.setVisible(true);
-        
+        /*
         
         //Andi: Vorschau-Test
         this.setBounds(100, 100, 500, 400);
@@ -45,6 +46,7 @@ public class Explorer extends JFrame{
         vor.reload(new File("Testdateien/square200.png"));
         vor.reload(new File("Testdateien/square400.gif"));
         vor.reload(new File("Testdateien/square800.png"));
+        */
     }
 
     /**
