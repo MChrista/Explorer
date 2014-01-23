@@ -22,7 +22,7 @@ public class Explorer extends JFrame{
     JLabel vorschau=new JLabel("Vorschau");
     Ordnerstruktur bst=new Ordnerstruktur();
     static Dateistruktur dst=new Dateistruktur();
-    Vorschau vor=new Vorschau();
+    Vorschau vor=new Vorschau(this);
     
     public Explorer(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,11 +40,16 @@ public class Explorer extends JFrame{
         
         
         //Andi: Vorschau-Test
-        this.setBounds(100, 100, 800, 500);
-        vor.reload(new File("Testdateien/square100.jpg"));
-        vor.reload(new File("Testdateien/square200.png"));
-        vor.reload(new File("Testdateien/square400.gif"));
-        vor.reload(new File("Testdateien/square800.png"));
+        this.setBounds(100, 100, 600, 400);
+        //vor.reload(new File("Testdateien/square100.jpg"));
+        //vor.reload(new File("Testdateien/square200.png"));
+        //vor.reload(new File("Testdateien/square400.gif"));
+        //vor.reload(new File("Testdateien/square800.png"));
+        //vor.reload(new File("Testdateien/200x500.png"));
+        //vor.reload(new File("Testdateien/spannend.txt"));
+        //vor.reload(new File("Testdateien/falsche.endung"));
+        vor.reload(new File("Testdateien/test.html"));
+        vor.reload(new File("Testdateien/bigblub.rtf"));
     }
     
     
