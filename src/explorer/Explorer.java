@@ -21,7 +21,7 @@ public class Explorer extends JFrame{
     JLabel datei=new JLabel("Datei");
     JLabel vorschau=new JLabel("Vorschau");
     Ordnerstruktur bst=new Ordnerstruktur();
-    Dateistruktur dst=new Dateistruktur();
+    static Dateistruktur dst=new Dateistruktur();
     Vorschau vor=new Vorschau();
     
     public Explorer(){
@@ -46,6 +46,11 @@ public class Explorer extends JFrame{
         vor.reload(new File("Testdateien/square400.gif"));
         vor.reload(new File("Testdateien/square800.png"));
     }
+    
+    
+    public static void repaintDateistruktur() {
+    	dst.repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -54,4 +59,5 @@ public class Explorer extends JFrame{
         new Explorer();
         // TODO code application logic here
     }
+    
 }

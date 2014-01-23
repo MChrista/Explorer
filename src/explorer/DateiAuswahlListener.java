@@ -4,17 +4,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 
-public class OrdnerKlickListener implements MouseListener {
 
-	File file;
-	
-	public OrdnerKlickListener ( File file ) {
-		this.file = file;
-	}
-	
+public class DateiAuswahlListener implements MouseListener {
+
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		Dateistruktur.elementClicked( file );		
+		int row = Dateistruktur.getMainTable().getSelectedRow();
+		File file = (File)Dateistruktur.getMainTable().getValueAt(row, 4);
+		
 	}
 
 	@Override
@@ -40,5 +37,7 @@ public class OrdnerKlickListener implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+
+
 }
