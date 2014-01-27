@@ -17,35 +17,69 @@ import javax.swing.JPanel;
  * @author A001278
  */
 public class Explorer extends JFrame{
-    JLabel ordner=new JLabel("Ordner");
-    JLabel datei=new JLabel("Datei");
-    JLabel vorschau=new JLabel("Vorschau");
-    Baumstruktur bst=new Baumstruktur();
-    Dateistruktur dst=new Dateistruktur();
-    Vorschau vor=new Vorschau();
+    Ordnerstruktur bst=new Ordnerstruktur();
+    public Ordnerstruktur getBst() {
+		return bst;
+	}
+
+
+
+	public void setBst(Ordnerstruktur bst) {
+		this.bst = bst;
+	}
+
+
+
+	public Dateistruktur getDst() {
+		return dst;
+	}
+
+
+
+	public void setDst(Dateistruktur dst) {
+		this.dst = dst;
+	}
+
+
+
+	public Vorschau getVor() {
+		return vor;
+	}
+
+
+
+	public void setVor(Vorschau vor) {
+		this.vor = vor;
+	}
+
+
+
+	Dateistruktur dst=new Dateistruktur(this);
+    Vorschau vor=new Vorschau(this);
     
     public Explorer(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new BorderLayout());
-        JPanel pane=new JPanel();
-        pane.setLayout(new GridLayout(1,3));
-        pane.add(ordner);
-        pane.add(datei);
-        pane.add(vorschau);
-        this.add(pane,BorderLayout.NORTH);
-        this.add(bst,BorderLayout.WEST);
-        this.add(dst,BorderLayout.CENTER);
-        this.add(vor,BorderLayout.EAST);
+        this.setLayout(new GridLayout(1,3));
+        this.add(bst);
+        this.add(dst);
+        this.add(vor);
         this.setVisible(true);
         
         
         //Andi: Vorschau-Test
-        this.setBounds(100, 100, 500, 400);
-        vor.reload(new File("Testdateien/square100.jpg"));
-        vor.reload(new File("Testdateien/square200.png"));
-        vor.reload(new File("Testdateien/square400.gif"));
-        vor.reload(new File("Testdateien/square800.png"));
+        this.setBounds(100, 100, 600, 400);
+        //vor.reload(new File("Testdateien/square100.jpg"));
+        //vor.reload(new File("Testdateien/square200.png"));
+        //vor.reload(new File("Testdateien/square400.gif"));
+        //vor.reload(new File("Testdateien/square800.png"));
+        //vor.reload(new File("Testdateien/200x500.png"));
+        //vor.reload(new File("Testdateien/spannend.txt"));
+        //vor.reload(new File("Testdateien/falsche.endung"));
+        vor.reload(new File("Testdateien/test.html"));
+        //vor.reload(new File("Testdateien/bigblub.rtf"));
     }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -54,4 +88,5 @@ public class Explorer extends JFrame{
         new Explorer();
         // TODO code application logic here
     }
+    
 }
