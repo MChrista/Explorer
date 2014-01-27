@@ -14,7 +14,11 @@ public class OrdnerKlickListener implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+<<<<<<< HEAD
 		//Dateistruktur.elementClicked( file );		
+=======
+		Dateistruktur.elementClicked( file );		
+>>>>>>> 1907cbe8403fc9f3932bf4c0412ab46ec9c442f6
 	}
 
 	@Override

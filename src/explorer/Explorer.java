@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  * @author A001278
  */
 public class Explorer extends JFrame{
+<<<<<<< HEAD
     Ordnerstruktur bst=new Ordnerstruktur();
     public Ordnerstruktur getBst() {
 		return bst;
@@ -55,6 +56,13 @@ public class Explorer extends JFrame{
 
 
 	Dateistruktur dst=new Dateistruktur(this);
+=======
+    JLabel ordner=new JLabel("Ordner");
+    JLabel datei=new JLabel("Datei");
+    JLabel vorschau=new JLabel("Vorschau");
+    Ordnerstruktur bst=new Ordnerstruktur();
+    static Dateistruktur dst=new Dateistruktur();
+>>>>>>> 1907cbe8403fc9f3932bf4c0412ab46ec9c442f6
     Vorschau vor=new Vorschau(this);
     
     public Explorer(){
@@ -76,7 +84,16 @@ public class Explorer extends JFrame{
         //vor.reload(new File("Testdateien/spannend.txt"));
         //vor.reload(new File("Testdateien/falsche.endung"));
         vor.reload(new File("Testdateien/test.html"));
+<<<<<<< HEAD
         //vor.reload(new File("Testdateien/bigblub.rtf"));
+=======
+        vor.reload(new File("Testdateien/bigblub.rtf"));
+    }
+    
+    
+    public static void repaintDateistruktur() {
+    	dst.repaint();
+>>>>>>> 1907cbe8403fc9f3932bf4c0412ab46ec9c442f6
     }
     
     
