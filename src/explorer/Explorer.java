@@ -4,13 +4,9 @@
  */
 package explorer;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.io.File;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -29,20 +25,8 @@ public class Explorer extends JFrame{
         this.add(ost);
         this.add(dst);
         this.add(vor);
+        this.setBounds(0, 0, 600, 400);
         this.setVisible(true);
-        
-        
-        //Andi: Vorschau-Test
-        this.setBounds(100, 100, 600, 400);
-        //vor.reload(new File("Testdateien/square100.jpg"));
-        //vor.reload(new File("Testdateien/square200.png"));
-        //vor.reload(new File("Testdateien/square400.gif"));
-        //vor.reload(new File("Testdateien/square800.png"));
-        //vor.reload(new File("Testdateien/200x500.png"));
-        //vor.reload(new File("Testdateien/spannend.txt"));
-        //vor.reload(new File("Testdateien/falsche.endung"));
-        vor.reload(new File("Testdateien/test.html"));
-        vor.reload(new File("Testdateien/bigblub.rtf"));
     }
    
     
