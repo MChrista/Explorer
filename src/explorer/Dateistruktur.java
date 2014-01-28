@@ -37,12 +37,7 @@ import javax.swing.table.DefaultTableModel;
 		MainTable.getTableHeader().setReorderingAllowed(false);
 		MainTable.setRowSelectionAllowed(true);
 		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
-		
-		
-		this.setLayout( new BorderLayout() );
-	//	this.add(MainTable.getTableHeader(),BorderLayout.PAGE_START);
-		
-		
+		this.setLayout( new BorderLayout() );		
 	}
 
 

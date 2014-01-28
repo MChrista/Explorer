@@ -19,8 +19,8 @@ public class DateiAuswahlListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		int row = dat.getMainTable().getSelectedRow();
-		File file = (File)dat.getMainTable().getValueAt(row, 4);
-		vor.reload(file);
+		vor.reload(new File(dat.getCurrentPath() + "//" + dat.getMainTable().getValueAt(row, 0)) );
+		
 	}
 
 
