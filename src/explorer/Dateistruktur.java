@@ -6,10 +6,13 @@ package explorer;
 
 import java.awt.BorderLayout;
 import java.io.File;
+import java.sql.Date;
 
 import javax.swing.DropMode;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,23 +24,23 @@ import javax.swing.JTable;
 	JTable MainTable;	
 	Object[][] data; 
 	private Explorer explorer;
+	String currentPath;
 	String[] coloumnNames = {"Name",
-							"ï¿½nderungsdatum",
-							"Grï¿½ï¿½e"};	
+							"Änderungsdatum",
+							"Größe"};	
 	
 	
 	
 	public Dateistruktur(Explorer expl) {
 		explorer = expl;
 		MainTable = new JTable(data, coloumnNames);
-		MainTable.setFillsViewportHeight(true);
 		MainTable.getTableHeader().setReorderingAllowed(false);
 		MainTable.setRowSelectionAllowed(true);
 		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
 		
 		
 		this.setLayout( new BorderLayout() );
-		this.add(MainTable.getTableHeader(),BorderLayout.PAGE_START);
+	//	this.add(MainTable.getTableHeader(),BorderLayout.PAGE_START);
 		
 		
 	}
@@ -50,21 +53,64 @@ import javax.swing.JTable;
 
 	public void directorySelected( File directory ) {
 
-		File[] files = directory.listFiles();
+		File[] temp = directory.listFiles();
+		File[] files = new File[temp.length];
+		data = new Object[temp.length][4];
+		currentPath = directory.getAbsolutePath();
 		
+		int a= 0;
+		int b= 0;
+		while ( a < temp.length ) {
+			if ( !temp[a].isDirectory() ) {	// wenn gefundene Datei kein directory ist
+				files[b] = temp[a];
+				b++; a++;
+			}
+			else {
+				a++;
+			}
+		}
+		
+		// Tabelle füllen	
 		int i =0;
 		while ( i < files.length ) {
 			int j =0;
+			if ( !(files[i] == null) ) {
+
 				data[i][j] = files[i].getName();
-				data[i][j+1] = files[i].lastModified();
-				data[i][j+2] = files[i].getTotalSpace();
-				data[i][j+3] = files[i];	// schreib die datei in tabelle ( unsichtbar ) damit sie an die vorschau ï¿½bergeben werden kann
-			i++;
+				data[i][j+1] =files[i].lastModified();
+				data[i][j+2] = files[i].length();
+				i++;
+			}
+			else {
+				i++;	
+			}			
 		}
+		
+		DefaultTableModel dtm = new DefaultTableModel(data,coloumnNames) {
+			public boolean isCellEditable(int row, int col) {
+				return false;
+			}
+		};
+		
+		
+		MainTable = new JTable(data, coloumnNames);
+		MainTable.getTableHeader().setReorderingAllowed(false);
+		MainTable.setRowSelectionAllowed(true);
+		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
+		MainTable.setModel(dtm);
+		this.add(MainTable.getTableHeader(), BorderLayout.NORTH);
 		this.add(MainTable , BorderLayout.CENTER);
 		this.repaint();
 
 	}
 	
-
+	public Date unix2Date(long timestamp) {
+		int days = (int)timestamp/60/60/24;
+		
+	}
+	
+	public String getCurrentPath() {
+		return currentPath;
+	}
+	
 }
