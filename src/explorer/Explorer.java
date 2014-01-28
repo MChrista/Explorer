@@ -17,58 +17,16 @@ import javax.swing.JPanel;
  * @author A001278
  */
 public class Explorer extends JFrame{
-<<<<<<< HEAD
-    Ordnerstruktur bst=new Ordnerstruktur();
-    public Ordnerstruktur getBst() {
-		return bst;
-	}
-
-
-
-	public void setBst(Ordnerstruktur bst) {
-		this.bst = bst;
-	}
-
-
-
-	public Dateistruktur getDst() {
-		return dst;
-	}
-
-
-
-	public void setDst(Dateistruktur dst) {
-		this.dst = dst;
-	}
-
-
-
-	public Vorschau getVor() {
-		return vor;
-	}
-
-
-
-	public void setVor(Vorschau vor) {
-		this.vor = vor;
-	}
-
 
 
 	Dateistruktur dst=new Dateistruktur(this);
-=======
-    JLabel ordner=new JLabel("Ordner");
-    JLabel datei=new JLabel("Datei");
-    JLabel vorschau=new JLabel("Vorschau");
-    Ordnerstruktur bst=new Ordnerstruktur();
-    static Dateistruktur dst=new Dateistruktur();
->>>>>>> 1907cbe8403fc9f3932bf4c0412ab46ec9c442f6
+    Ordnerstruktur ost=new Ordnerstruktur();
     Vorschau vor=new Vorschau(this);
     
     public Explorer(){
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(1,3));
-        this.add(bst);
+        this.add(ost);
         this.add(dst);
         this.add(vor);
         this.setVisible(true);
@@ -84,17 +42,9 @@ public class Explorer extends JFrame{
         //vor.reload(new File("Testdateien/spannend.txt"));
         //vor.reload(new File("Testdateien/falsche.endung"));
         vor.reload(new File("Testdateien/test.html"));
-<<<<<<< HEAD
-        //vor.reload(new File("Testdateien/bigblub.rtf"));
-=======
         vor.reload(new File("Testdateien/bigblub.rtf"));
     }
-    
-    
-    public static void repaintDateistruktur() {
-    	dst.repaint();
->>>>>>> 1907cbe8403fc9f3932bf4c0412ab46ec9c442f6
-    }
+   
     
     
 
@@ -105,5 +55,15 @@ public class Explorer extends JFrame{
         new Explorer();
         // TODO code application logic here
     }
+    
+    public Dateistruktur getDst() {
+		return dst;
+	}
+
+
+	public Vorschau getVor() {
+		return vor;
+	}
+
     
 }
