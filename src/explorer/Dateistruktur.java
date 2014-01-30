@@ -18,9 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 	public class Dateistruktur extends JPanel {
     
-
-	JTable MainTable;	
-	Object[][] data; 
+	private JTable MainTable;
+	private Object[][] data;
 	private Explorer explorer;
 	String currentPath;
 	String[] coloumnNames = {"Name",
@@ -31,6 +30,9 @@ import javax.swing.table.DefaultTableModel;
 	
 	public Dateistruktur(Explorer expl) {
 		explorer = expl;
+		MainTable = new JTable();
+		this.add(MainTable.getTableHeader(), BorderLayout.NORTH);
+		this.add(MainTable , BorderLayout.CENTER);
 		this.setLayout( new BorderLayout() );		
 	}
 
@@ -41,7 +43,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 	public void directorySelected( File directory ) {
-		System.out.println("bla");
+		
 		File[] temp = directory.listFiles();
 		currentPath = directory.getAbsolutePath();
 		int rowCount =0;
@@ -59,7 +61,7 @@ import javax.swing.table.DefaultTableModel;
 		
 		File[] files = new File[rowCount];
 		data = null;
-		data = new Object[rowCount-1][4];
+		data = new Object[rowCount][4];
 		int a= 0;
 		int b= 0;
 		while ( a < temp.length ) {
@@ -74,18 +76,12 @@ import javax.swing.table.DefaultTableModel;
 		
 		// Tabelle füllen	
 		int i =0;
-		while ( i < files.length ) {
+		while ( i < rowCount ) {
 			int j =0;
-			if ( !(files[i] == null) ) {
-
 				data[i][j] = files[i].getName();
 				data[i][j+1] = unix2Date( files[i].lastModified() );
 				data[i][j+2] = files[i].length();
-				i++;
-			}
-			else {
-				i++;	
-			}			
+				i++;		
 		}
 		
 		DefaultTableModel dtm = new DefaultTableModel(data,coloumnNames) {
@@ -94,22 +90,25 @@ import javax.swing.table.DefaultTableModel;
 			}
 		};
 		
-		dtm.setRowCount(rowCount);
-		MainTable = null;
-		MainTable = new JTable();
+		MainTable.invalidate();
+		dtm.setRowCount(rowCount);	
 		MainTable.getTableHeader().setReorderingAllowed(false);
 		MainTable.setRowSelectionAllowed(true);
 		MainTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
 		MainTable.setModel(dtm);
+		MainTable.revalidate();
 		this.add(MainTable.getTableHeader(), BorderLayout.NORTH);
 		this.add(MainTable , BorderLayout.CENTER);
-		this.repaint();
+		this.updateUI();
 
 	}
 	
-	public Date unix2Date(long timestamp) {
-		return new Date(timestamp);
+	public String unix2Date(long timestamp) {
+		
+		Date temp = new Date(timestamp);
+		return temp.toLocaleString();
+		
 	}
 	
 	public String getCurrentPath() {
@@ -117,3 +116,4 @@ import javax.swing.table.DefaultTableModel;
 	}
 	
 }
+
