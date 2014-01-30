@@ -53,9 +53,9 @@ public class Vorschau extends JPanel {
     	this.add(label, BorderLayout.CENTER);
     }
 	
-	// Beim AuwÃ¤hlen/Markieren einer Datei aufgerufen
-	// Beim VerÃ¤ndern der FenstergrÃ¶ÃŸe aufgerufen
-	// Zeigt eine Vorschau der Ã¼bergebenen Datei an
+	// Beim Auwählen/Markieren einer Datei aufgerufen
+	// Beim Verändern der Fenstergröße aufgerufen
+	// Zeigt eine Vorschau der übergebenen Datei an
     public void reload(File f) {
     	if (f != null) {
     		file = f;
@@ -154,24 +154,24 @@ public class Vorschau extends JPanel {
     	}
     	
     	/*--------------------
-    	 * Keine Datei ausgewÃ¤hlt
+    	 * Keine Datei ausgewählt
     	 --------------------*/   	
     	else if (fname == "") {
     		this.add(label, BorderLayout.CENTER);
-    		label.setText("<html>Keine Datei zur<br>Vorschau ausgewÃ¤hlt.</html>");
+    		label.setText("<html>Keine Datei zur<br>Vorschau ausgewählt.</html>");
     	}
     	
     	/*--------------------
-    	 * UngÃ¼ltige Dateien
+    	 * Ungültige Dateien
     	 --------------------*/
     	else{
         	this.add(label, BorderLayout.CENTER);
-        	label.setText("<html>Vorschau fÃ¼r diesen<br>Dateityp nicht mÃ¶glich.</html>");
+        	label.setText("<html>Vorschau für diesen<br>Dateityp nicht möglich.</html>");
     	}
     	explorer.validate();
     }
     
-    // Verkleinert ein Bild auf den Ã¼bergebenen Faktor
+    // Verkleinert ein Bild auf den übergebenen Faktor
     private void verkleinern(double faktor) {
     	AffineTransformOp atop = new AffineTransformOp(AffineTransform.getScaleInstance(faktor, faktor), AffineTransformOp.TYPE_BICUBIC);
 		BufferedImage imgOut = atop.createCompatibleDestImage(image, ColorModel.getRGBdefault());

@@ -16,7 +16,7 @@ public class Explorer extends JFrame{
 
 
 	Dateistruktur dst=new Dateistruktur(this);
-    Ordnerstruktur ost=new Ordnerstruktur();
+    Ordnerstruktur ost=new Ordnerstruktur(this);
     Vorschau vor=new Vorschau(this);
     
     public Explorer(){

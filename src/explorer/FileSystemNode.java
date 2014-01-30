@@ -1,4 +1,5 @@
 package explorer;
+
 import java.io.*;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -8,9 +9,10 @@ public class FileSystemNode extends DefaultMutableTreeNode{
 	File file;
 	
 	public FileSystemNode(File f){
+
 		if(f==null){
 			name="";
-		}else if(f.getAbsolutePath().split("/").length==1){
+		}else if(f.getAbsolutePath().split("\\\\").length==1){
 			name=f.getAbsolutePath();
 		}else{
 			name=f.getName();
@@ -23,6 +25,7 @@ public class FileSystemNode extends DefaultMutableTreeNode{
 	    return this.name;
 	}
 	
+
 	
 
 }
