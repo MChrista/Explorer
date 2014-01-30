@@ -31,10 +31,6 @@ import javax.swing.table.DefaultTableModel;
 	
 	public Dateistruktur(Explorer expl) {
 		explorer = expl;
-		MainTable = new JTable(data, coloumnNames);
-		MainTable.getTableHeader().setReorderingAllowed(false);
-		MainTable.setRowSelectionAllowed(true);
-		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
 		this.setLayout( new BorderLayout() );		
 	}
 
@@ -45,12 +41,25 @@ import javax.swing.table.DefaultTableModel;
 
 
 	public void directorySelected( File directory ) {
-
+		System.out.println("bla");
 		File[] temp = directory.listFiles();
-		File[] files = new File[temp.length];
-		data = new Object[temp.length][4];
 		currentPath = directory.getAbsolutePath();
+		int rowCount =0;
+		int z =0;
 		
+		while ( z < temp.length ) {
+			if ( !(temp[z].isDirectory()) ) {
+				rowCount++;
+				z++;
+			}
+			else {
+				z++;
+			}
+		}
+		
+		File[] files = new File[rowCount];
+		data = null;
+		data = new Object[rowCount-1][4];
 		int a= 0;
 		int b= 0;
 		while ( a < temp.length ) {
@@ -85,15 +94,17 @@ import javax.swing.table.DefaultTableModel;
 			}
 		};
 		
-		
-		MainTable = new JTable(data, coloumnNames);
+		dtm.setRowCount(rowCount);
+		MainTable = null;
+		MainTable = new JTable();
 		MainTable.getTableHeader().setReorderingAllowed(false);
 		MainTable.setRowSelectionAllowed(true);
+		MainTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		MainTable.addMouseListener(new DateiAuswahlListener(explorer));
 		MainTable.setModel(dtm);
 		this.add(MainTable.getTableHeader(), BorderLayout.NORTH);
 		this.add(MainTable , BorderLayout.CENTER);
-		this.updateUI();
+		this.repaint();
 
 	}
 	
