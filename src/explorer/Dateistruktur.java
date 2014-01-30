@@ -8,10 +8,8 @@ import java.awt.BorderLayout;
 import java.io.File;
 import java.sql.Date;
 
-import javax.swing.DropMode;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -72,7 +70,7 @@ import javax.swing.table.DefaultTableModel;
 			if ( !(files[i] == null) ) {
 
 				data[i][j] = files[i].getName();
-				data[i][j+1] =files[i].lastModified();
+				data[i][j+1] = unix2Date( files[i].lastModified() );
 				data[i][j+2] = files[i].length();
 				i++;
 			}
@@ -95,13 +93,12 @@ import javax.swing.table.DefaultTableModel;
 		MainTable.setModel(dtm);
 		this.add(MainTable.getTableHeader(), BorderLayout.NORTH);
 		this.add(MainTable , BorderLayout.CENTER);
-		this.repaint();
+		this.updateUI();
 
 	}
 	
 	public Date unix2Date(long timestamp) {
-		int days = (int)timestamp/60/60/24;
-		
+		return new Date(timestamp);
 	}
 	
 	public String getCurrentPath() {
