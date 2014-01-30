@@ -44,7 +44,7 @@ public class Vorschau extends JPanel {
 		explorer = expl;
 		this.setLayout(new BorderLayout());
 		this.addComponentListener(new VorschauListener(this));
-    	label = new JLabel("<html>Keine Datei zur<br>Vorschau ausgewählt.</html>");
+    	label = new JLabel();
     	area = new TextArea(null, 0, 0, TextArea.SCROLLBARS_BOTH);
     	area.setEditable(false);
     	editorPane = new JEditorPane();
@@ -154,9 +154,17 @@ public class Vorschau extends JPanel {
     	}
     	
     	/*--------------------
+    	 * Keine Datei ausgewählt
+    	 --------------------*/   	
+    	else if (fname == "") {
+    		this.add(label, BorderLayout.CENTER);
+    		label.setText("<html>Keine Datei zur<br>Vorschau ausgewählt.</html>");
+    	}
+    	
+    	/*--------------------
     	 * Ungültige Dateien
     	 --------------------*/
-    	else {
+    	else{
         	this.add(label, BorderLayout.CENTER);
         	label.setText("<html>Vorschau für diesen<br>Dateityp nicht möglich.</html>");
     	}
